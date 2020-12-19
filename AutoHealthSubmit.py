@@ -56,6 +56,11 @@ def get_chrome_driver():
     options.add_argument('--disable-dev-shm-usage')
     return webdriver.Chrome(options=options)
 
+def saveFile(message):
+    # 保存email内容
+    with open("email.txt", 'a+', encoding="utf-8") as email:
+        email.write(message+'\n')
+
 driver = get_chrome_driver()
 driver.set_page_load_timeout(60)
 driver.implicitly_wait(10)
@@ -79,6 +84,9 @@ except Exception as e:
 driver.quit()
 if(completed):
     logger.info("User:%s completed" % usr_id)
+    saveFile("%s健康申报---成功---！" % usr_id)
 else:
     logger.info("User:%s failed" % usr_id)
+    saveFile("%s健康申报----失败----！" % usr_id)
 assert(completed)
+assert(False)
