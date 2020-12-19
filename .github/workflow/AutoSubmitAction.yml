@@ -1,0 +1,36 @@
+name: AutoSubmitAction
+
+on:
+  watch:
+    types: started
+  schedule:
+    - cron: '0 20 * * *'
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  super-lint:
+    # Name the Job
+    name: Submit Health Data
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+      - uses: nanasess/setup-chromedriver@master
+      - name: 'Install requirements'
+        run: |
+          python -m pip install --upgrade pip
+          pip install selenium
+      - name: 'Submit'
+        env:
+          USERID: ${{ secrets.USERID }}
+          USERPASS: ${{ secrets.USERPASS }}
+        run: python AutoHealthSubmit.py
+      
