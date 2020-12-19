@@ -54,11 +54,8 @@ driver.implicitly_wait(10)
 usr_id = os.getenv("USERID")
 usr_pwd = os.getenv("USERPASS")
 completed = False
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    filename="HealthSubmit.log")
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("Health Submit")
-ch = logging.StreamHandler()
-logger.addHandler(ch)
 try:
     login(driver, usr_id, usr_pwd)
     time.sleep(10)
