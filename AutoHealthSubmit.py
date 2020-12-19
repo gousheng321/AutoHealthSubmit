@@ -88,5 +88,3 @@ if(completed):
 else:
     logger.info("User:%s failed" % usr_id)
     saveFile("%s健康申报----失败----！" % usr_id)
-assert(completed)
-assert(False)
