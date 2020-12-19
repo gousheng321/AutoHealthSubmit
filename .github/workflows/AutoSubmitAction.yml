@@ -34,15 +34,15 @@ jobs:
       - name: 'Get Date'
         run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shenzhen' date '+%Y-%m-%d %T')"
       - name: 'Send mail'
-          uses: dawidd6/action-send-mail@master
-          with:
-            server_address: smtp.163.com
-            server_port: 465
-            username: ${{ secrets.MAIL_USERNAME }}
-            password: ${{ secrets.MAIL_PASSWORD }}
-            subject: 疫情健康申报系统操作结果 (${{env.REPORT_DATE}})
-            body: file://email.txt
-            to: ${{ secrets.MAIL_RESULT }}
-            from: GitHub Actions
-            content_type: text/html
+        uses: dawidd6/action-send-mail@master
+        with:
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 疫情健康申报系统操作结果 (${{env.REPORT_DATE}})
+          body: file://email.txt
+          to: ${{ secrets.MAIL_RESULT }}
+          from: GitHub Actions
+          content_type: text/html
       
