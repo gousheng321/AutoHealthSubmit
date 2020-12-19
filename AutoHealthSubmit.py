@@ -47,7 +47,16 @@ def is_logined(chrome):
     logger.debug(current_page_url)
     return "complete" in current_page_url or "index" in current_page_url
 
-driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+def get_chrome_driver():
+    from selenium import webdriver
+    options = webdriver.ChromeOptions()
+    options.add_argument("headless")
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--disable-dev-shm-usage')
+    return webdriver.Chrome(options=options)
+
+driver = get_chrome_driver()
 driver.set_page_load_timeout(60)
 driver.implicitly_wait(10)
 
