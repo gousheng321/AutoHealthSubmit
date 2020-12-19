@@ -47,7 +47,7 @@ def is_logined(chrome):
     logger.debug(current_page_url)
     return "complete" in current_page_url or "index" in current_page_url
 
-driver = webdriver.Chrome('./chromedriver')
+driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 driver.set_page_load_timeout(60)
 driver.implicitly_wait(10)
 
