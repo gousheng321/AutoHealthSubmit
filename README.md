@@ -50,5 +50,12 @@ Automatic submit daily health data
 ![merge](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/merge.png)
 </details>
 
+<details>
+<summary>如何停止自动打卡</summary>
+
+在`Settings->Action`里面选择`Disable Action`
+![停止打卡](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/停止打卡.png)
+</details>
+
 # 参考文献
 https://github.com/Saujyun/AutoAction
