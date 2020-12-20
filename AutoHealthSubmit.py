@@ -87,3 +87,4 @@ if completed:
 else:
     logger.info("User:%s failed" % usr_id)
     save_for_email("%s健康申报----失败----！" % usr_id)
+assert(completed)#If not complete fail action to send a mail
