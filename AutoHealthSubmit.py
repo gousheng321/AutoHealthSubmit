@@ -1,13 +1,8 @@
 # coding=utf-8
 import logging
-import sys
-import time
 import os
-os.getenv('key_name')
-
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
+import time
 from selenium import webdriver
-from selenium.webdriver.support.select import Select
 
 
 def login(chrome, usr_name, pwd):
@@ -34,7 +29,7 @@ def submit(chrome):
     # 提交
     ele = chrome.find_element_by_id("tj")
     webdriver.ActionChains(chrome).move_to_element(ele).click(ele).perform()
-    
+
 
 def is_completed(chrome):
     current_page_url = chrome.current_url
@@ -47,6 +42,7 @@ def is_logined(chrome):
     logger.debug(current_page_url)
     return "complete" in current_page_url or "index" in current_page_url
 
+
 def get_chrome_driver():
     from selenium import webdriver
     options = webdriver.ChromeOptions()
@@ -56,10 +52,12 @@ def get_chrome_driver():
     options.add_argument('--disable-dev-shm-usage')
     return webdriver.Chrome(options=options)
 
-def saveFile(message):
+
+def save_for_email(message):
     # 保存email内容
     with open("email.txt", 'a+', encoding="utf-8") as email:
-        email.write(message+'\n')
+        email.write(message + '\n')
+
 
 driver = get_chrome_driver()
 driver.set_page_load_timeout(60)
@@ -73,18 +71,19 @@ logger = logging.getLogger("Health Submit")
 try:
     login(driver, usr_id, usr_pwd)
     time.sleep(10)
-    if(is_logined(driver)):
-        if(not is_completed(driver)):
+    if is_logined(driver):
+        if not is_completed(driver):
             submit(driver)
         time.sleep(10)
-        if(is_completed(driver)):
+        if is_completed(driver):
             completed = True
 except Exception as e:
-    logger.error("Failed to submit")
+    logger.error("Failed to submit" + str(e))
+    save_for_email("打卡失败：" + str(e))
 driver.quit()
-if(completed):
+if completed:
     logger.info("User:%s completed" % usr_id)
-    saveFile("%s健康申报---成功---！" % usr_id)
+    save_for_email("%s健康申报---成功---！" % usr_id)
 else:
     logger.info("User:%s failed" % usr_id)
-    saveFile("%s健康申报----失败----！" % usr_id)
+    save_for_email("%s健康申报----失败----！" % usr_id)
