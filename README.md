@@ -3,7 +3,7 @@ Automatic submit daily health data
 # 如何使用
 **此分支在成功打卡的情况下不会发送邮件，仅在`打卡失败`时Github会发送一封邮件到你`Github账号关联的邮箱`**
 <details>
-<summary>配置</summary>
+<summary>配置(点击展开)</summary>
 
 1. **点击右上角的`Fork`复制一份你的副本**
 ![Fork](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/Docs/Fork.png)
