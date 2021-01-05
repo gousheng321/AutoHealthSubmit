@@ -5,7 +5,8 @@ Automatic submit daily health data
 <details>
 <summary>配置</summary>
 
-1. 点击右上角的`Fork`复制一份你的副本
+1. **点击右上角的`Fork`复制一份你的副本**
+![Fork](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/Docs/Fork.png)
 
 **你要切换分支来使用no-mail模式**
 ![切换默认分支](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/Docs/切换默认分支.png)
