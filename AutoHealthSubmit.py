@@ -1,8 +1,10 @@
 # coding=utf-8
 import logging
 import os
-import time
+
 from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 def login(chrome, usr_name, pwd):
@@ -19,6 +21,7 @@ def login(chrome, usr_name, pwd):
 
     btn = chrome.find_element_by_xpath("//button")
     btn.click()
+    WebDriverWait(chrome, 20, 0.5).until(ec.staleness_of(btn))
 
 
 def submit(chrome):
@@ -29,6 +32,7 @@ def submit(chrome):
     # 提交
     ele = chrome.find_element_by_id("tj")
     webdriver.ActionChains(chrome).move_to_element(ele).click(ele).perform()
+    WebDriverWait(chrome, 20, 0.5).until(ec.staleness_of(ele))
 
 
 def is_completed(chrome):
@@ -70,11 +74,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger("Health Submit")
 try:
     login(driver, usr_id, usr_pwd)
-    time.sleep(10)
     if is_logined(driver):
         if not is_completed(driver):
             submit(driver)
-        time.sleep(10)
         if is_completed(driver):
             completed = True
 except Exception as e:
