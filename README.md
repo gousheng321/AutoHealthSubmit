@@ -10,6 +10,7 @@ Automatic submit daily health data
 
 **你要切换分支来使用no-mail模式**
 ![切换默认分支](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/Docs/切换默认分支.png)
+![切换默认分支2](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/Docs/切换默认分支2.png)
 2. 然后在`Settings->Secrets`里面添加你的账号密码
 
 在 New Secret 的 Name 填下面`大写`的变量名称，不能变
