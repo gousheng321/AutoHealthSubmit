@@ -27,6 +27,8 @@ def login(chrome, usr_name, pwd):
 
 def submit(chrome):
     logger.info("Start submit")
+    ele = chrome.find_element_by_id("loading")
+    WebDriverWait(chrome, 20, 0.5).until(ec.invisibility_of_element(ele))
     # 本人承诺XXX
     ele = chrome.find_element_by_id("10000")
     webdriver.ActionChains(chrome).move_to_element(ele).click(ele).perform()
