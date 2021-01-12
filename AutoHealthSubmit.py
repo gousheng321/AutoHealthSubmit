@@ -1,6 +1,7 @@
 # coding=utf-8
 import logging
 import os
+import traceback
 
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as ec
@@ -80,8 +81,8 @@ try:
         if is_completed(driver):
             completed = True
 except Exception as e:
-    logger.error("Failed to submit" + str(e))
-    save_for_email("打卡失败：" + str(e))
+    logger.error("Failed to submit:\n%s\n" % traceback.format_exc())
+    save_for_email("打卡失败\n%s\n" % traceback.format_exc())
 driver.quit()
 if completed:
     logger.info("User:%s completed" % usr_id)
