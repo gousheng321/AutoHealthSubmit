@@ -4,7 +4,7 @@ on:
   watch:
     types: started
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '15 23 * * *'
 
 jobs:
   # Set the job key. The key is displayed as the job name

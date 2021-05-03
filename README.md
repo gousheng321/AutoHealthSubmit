@@ -25,7 +25,7 @@ Automatic submit daily health data
 <details>
 <summary>手动运行</summary>
 
-**这个脚本每天6：00自动触发**
+**这个脚本每天7：15自动触发**
 
 点击右上角的Star测试运行，运行一次之后要UnStar再Star才会再运行
 ![运行](https://github.com/Windmill-City/AutoHealthSubmit/blob/no-mail/Docs/运行.png)
